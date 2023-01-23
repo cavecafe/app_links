@@ -123,7 +123,7 @@ Add this XML chapter in your `macos/Runner/Info.plist` inside `<plist version="1
         <key>CFBundleURLSchemes</key>
         <array>
             <!-- your schemes -->
-            <string>sample</string>
+            <string>callavo</string>
         </array>
     </dict>
 </array>
@@ -181,19 +181,21 @@ The following commands will help you to test links.
 
 ```sh
 adb shell am start -a android.intent.action.VIEW \
-  -d "sample://open.my.app/#/book/hello-world"
+  -d "callavo://callavo.dev/#/user/thomas"
 ```
+
 
 For App Links, you can also test it from Android Studio: [Documentation](https://developer.android.com/studio/write/app-link-indexing#testindent).
 
 ### Test on iOS
 
 ```sh
-/usr/bin/xcrun simctl openurl booted "app://www.example.com/#/book/hello-world"
+/usr/bin/xcrun simctl openurl booted "callavo://callavo.dev/#/user/thomas"
 ```
 
 ### Test on windows & macOS
 Open your browser and type in your address bar:
 ```
-sample://foo/#/book/hello-world2
+callavo://callavo.dev/#/user/thomas
+
 ```

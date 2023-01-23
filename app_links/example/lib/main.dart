@@ -20,7 +20,7 @@ import 'web_url_protocol.dart'
 ///
 /// You can launch an intent on an Android Emulator like this:
 ///    adb shell am start -a android.intent.action.VIEW \
-///     -d "sample://open.my.app/#/book/hello-world"
+///     -d "callavo://callavo.dev/#/user/thomas"
 ///
 ///
 /// On windows & macOS:
@@ -28,7 +28,7 @@ import 'web_url_protocol.dart'
 ///   opening your browser and type: sample://foo/#/book/hello-world2
 ///////////////////////////////////////////////////////////////////////////////
 
-const kWindowsScheme = 'sample';
+const kWindowsScheme = 'callavo';
 
 void main() {
   // Register our protocol only on Windows platform
@@ -81,7 +81,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   void openAppLink(Uri uri) {
-    _navigatorKey.currentState?.pushNamed(uri.fragment);
+    if (uri.scheme == "callavo") {
+      _navigatorKey.currentState?.pushNamed(uri.fragment);
+    }
   }
 
   @override
@@ -95,13 +97,13 @@ class _MyAppState extends State<MyApp> {
         // Mimic web routing
         final routeName = settings.name;
         if (routeName != null) {
-          if (routeName.startsWith('/book/')) {
-            // Navigated to /book/:id
+          if (routeName.startsWith('/user/')) {
+            // Navigated to /user/:id
             routeWidget = customScreen(
-              routeName.substring(routeName.indexOf('/book/')),
+              routeName.substring(routeName.indexOf('/user/')),
             );
-          } else if (routeName == '/book') {
-            // Navigated to /book without other parameters
+          } else if (routeName == '/user') {
+            // Navigated to /user without other parameters
             routeWidget = customScreen("None");
           }
         }
@@ -126,10 +128,10 @@ class _MyAppState extends State<MyApp> {
             Launch an intent to get to the second screen.
 
             On web:
-            http://localhost:<port>/#/book/1 for example.
+            * http://localhost:<port>/#/user/thomas for example.
 
             On windows & macOS, open your browser:
-            sample://foo/#/book/hello-deep-linking
+            callavo://callavo.dev/#/user/thomas
 
             This example code triggers new page from URL fragment.
             '''),

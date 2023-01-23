@@ -8,13 +8,13 @@
 		<dict>
 		<!-- Your scheme -->
 		<key>CFBundleURLSchemes</key>
-		<array>			
-			<string>app</string>
+		<array>
+		    <string>callavo</string>
 		</array>
 		<!-- Optional URL to distinguish your app from others
 		     in case of conflicting scheme name -->
 		<key>CFBundleURLName</key>
-		<string>open.my.app</string>		
+		<string>callavo.dev</string>
 		</dict>
 	</array>
 	<!-- END Custom URL scheme sample -->
@@ -57,5 +57,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 </dict>
 </plist>
